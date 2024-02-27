@@ -7,6 +7,7 @@ const mongoose = require("mongoose")
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+let catalogRouter = require("./routes/catalog")
 
 var app = express();
 const mongoDB = process.env.DB_URI
@@ -39,6 +40,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/catalog', catalogRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
