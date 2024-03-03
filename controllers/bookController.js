@@ -34,10 +34,24 @@ exports.index = async (req, res, next) => {
     }
 }
 
+// Schema for the book model
+
+// const BookSchema = new Schema({
+//     title: { type: String, required: true },
+//     author: { type: Schema.Types.ObjectId, ref: "Authur", required: true },
+//     summary: { type: String, required: true },
+//     isbn: { type: String, required: true },
+//     genre: [ { type: Schema.Types.ObjectId, ref: "Genre" }]
+// })
+
 // Display a list of all Books
 exports.book_list = async (req, res, next) => {
     try {
-        await res.send("Not implemented: print out a list of existing books");
+        const allBooks = await Book.find({}, "title author")
+        .sort({ title: 1 })
+        .populate("author")
+        .exec();
+        await res.render("book_list", { title: "Book List", book_list: allBooks });
     } catch (err) {
         next(err)
     }

@@ -64,6 +64,9 @@ router.get('/:objects', function(req, res, next) {
         case "book": 
             book_controller.index(req, res, next);
             break;
+        case "books":
+            book_controller.book_list(req, res, next);
+            break;
         case "genre":
             genre_controller.genre_list(req, res, next);
             break;
