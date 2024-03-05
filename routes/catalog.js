@@ -67,13 +67,13 @@ router.get('/:objects', function(req, res, next) {
         case "books":
             book_controller.book_list(req, res, next);
             break;
-        case "genre":
+        case "genres":
             genre_controller.genre_list(req, res, next);
             break;
-        case "author":
+        case "authors":
             author_controller.author_list(req, res, next);
             break;
-        case "bookinstance":
+        case "bookinstances":
             bookInstance_controller.bookInstance_list(req, res, next)
             break;
         default:
